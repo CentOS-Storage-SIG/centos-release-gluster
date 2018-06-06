@@ -9,8 +9,7 @@
 Summary: Gluster 4.1 (Long Term Stable) packages from the CentOS Storage SIG repository
 Name: centos-release-gluster41
 Version: 0.9
-# The .centos dist extension seems to be missing from the CBS rpm macros?
-Release: 1%{?dist}.centos
+Release: 2%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
 Source0: CentOS-Gluster-4.1.repo
@@ -45,6 +44,9 @@ sed -i -e "s,@BASEURL@,http://mirror.centos.org/centos," %{buildroot}%{_sysconfd
 %config(noreplace) %{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.1.repo
 
 %changelog
+* Wed Jun 6 2018 Niels de Vos <ndevos@redhat.com> - 0.9-2
+- Drop the .centos extension from the dist macro (Bug 14907)
+
 * Sat Jun 2 2018 Niels de Vos <ndevos@redhat.com> - 0.9-1
 - Initial version based on centos-release-gluster40
 - Only the centos-gluster41-test repo is enabled during Beta
