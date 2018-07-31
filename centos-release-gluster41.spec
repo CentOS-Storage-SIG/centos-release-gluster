@@ -1,19 +1,14 @@
-%global altarch 0
-%if ( 0%{?centos} >= 7 )
-%ifnarch x86_64
-# altarch is only available for CentOS-7, non c86_64
-%global altarch 1
-%endif
-%endif
-
 Summary: Gluster 4.1 (Long Term Stable) packages from the CentOS Storage SIG repository
 Name: centos-release-gluster41
 Version: 1.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
 Source0: CentOS-Gluster-4.1.repo
+BuildArch: noarch
 
+# $contentdir for altarch support was added with CentOS-7.5
+Requires: centos-release >= 7-5.1804.el7.centos.2
 # This provides the public key to verify the RPMs
 Requires: centos-release-storage-common
 
@@ -33,17 +28,15 @@ https://www.gluster.org/community/release-schedule
 
 %install
 install -D -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.1.repo
-%if %{altarch}
-sed -i -e "s,@BASEURL@,http://mirror.centos.org/altarch," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.1.repo
-%else
-sed -i -e "s,@BASEURL@,http://mirror.centos.org/centos," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.1.repo
-%endif
 
 %files
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.1.repo
 
 %changelog
+* Tue Jul 31 2018 Niels de Vos <ndevos@redhat.com> - 1.0-2
+- Add support for altarch repositories
+
 * Fri Jun 15 2018 Niels de Vos <ndevos@redhat.com> - 1.0-1
 - Disable centos-gluster41-test, enable centos-gluster41 repo
 
