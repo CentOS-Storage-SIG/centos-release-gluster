@@ -1,6 +1,6 @@
 Summary: Gluster 5 packages from the CentOS Storage SIG repository
 Name: centos-release-gluster5
-Version: 0.9
+Version: 1.0
 Release: 1%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
@@ -33,6 +33,10 @@ sed -i 's/i\$contentdir/centos/g' %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-
 %config(noreplace) %{_sysconfdir}/yum.repos.d/CentOS-Gluster-5.repo
 
 %changelog
+* Fri Oct 19 2018 Niels de Vos <ndevos@redhat.com> - 1.0-1
+- Use mirrorlist.c.o for the main repository
+- Disable centos-gluster5-test, enable centos-gluster5 repository
+
 * Mon Sep 17 2018 Niels de Vos <ndevos@redhat.com> - 0.9-1
 - Initial version based on centos-release-gluster41
 - Only the centos-gluster5-test repo is enabled during pre-release
