@@ -3,9 +3,9 @@ enabled on this system. The centos-release-gluster-legacy package caused the
 removal of centos-release-gluster* versions that do not receive updates
 anymore.
 
-It is strongly recommended to follow the Long Term Maintenance releases for
-Gluster deployments. An announcement is sent to the CentOS Announce and Gluster
-Announce mailinglists when a new version becomes available.
+It is strongly recommended to follow the releases for Gluster deployments and
+plan for upgrades accordingly. An announcement is sent to the CentOS Announce
+and Gluster Announce mailinglists when a new version becomes available.
 
-More details about the Long Term Maintenance versions and their End-Of-Life
-dates are on https://www.gluster.org/community/release-schedule
+More details about the versions and their End-Of-Life dates are on
+https://www.gluster.org/community/release-schedule

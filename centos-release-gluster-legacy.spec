@@ -1,6 +1,6 @@
 Summary: Disable unmaintained Gluster repositories from the CentOS Storage SIG
 Name: centos-release-gluster-legacy
-Version: 3.10
+Version: 3.12
 Release: 1%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
@@ -8,6 +8,10 @@ BuildArch: noarch
 Source0: README.warn
 
 # only deprecate LTM releases, STM should get upgraded with the next LTM
+Provides: centos-release-gluster = 3.12
+Obsoletes: centos-release-gluster312
+Conflicts: centos-release-gluster312
+
 Provides: centos-release-gluster = 3.10
 Obsoletes: centos-release-gluster310
 Conflicts: centos-release-gluster310
@@ -42,5 +46,8 @@ install -m 0644 -D %{SOURCE0} %{buildroot}/%{_docdir}/README
 %doc %{_docdir}/README
 
 %changelog
+* Fri Nov 2 2018 Niels de Vos <ndevos@redhat.com> - 3.12-1
+- Deprecate centos-release-gluster312
+
 * Mon Jun 25 2018 Niels de Vos <ndevos@redhat.com> - 3.10-1
 - Remove unmaintained centos-release-gluster* <= 3.10 versions
