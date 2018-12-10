@@ -1,34 +1,35 @@
 Summary: Disable unmaintained Gluster repositories from the CentOS Storage SIG
 Name: centos-release-gluster-legacy
 Version: 4.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
 BuildArch: noarch
 Source0: README.warn
 
+# WARN: only have a single Provides: to work around rhbz#1657753
 Provides: centos-release-gluster = 4.0
 Obsoletes: centos-release-gluster40
 Conflicts: centos-release-gluster40
 
 # only deprecate LTM releases, STM should get upgraded with the next LTM
-Provides: centos-release-gluster = 3.12
+#Provides: centos-release-gluster = 3.12
 Obsoletes: centos-release-gluster312
 Conflicts: centos-release-gluster312
 
-Provides: centos-release-gluster = 3.10
+#Provides: centos-release-gluster = 3.10
 Obsoletes: centos-release-gluster310
 Conflicts: centos-release-gluster310
 
-Provides: centos-release-gluster = 3.8
+#Provides: centos-release-gluster = 3.8
 Obsoletes: centos-release-gluster38
 Conflicts: centos-release-gluster38
 
-Provides: centos-release-gluster = 3.7
+#Provides: centos-release-gluster = 3.7
 Obsoletes: centos-release-gluster37
 Conflicts: centos-release-gluster37
 
-Provides: centos-release-gluster = 3.6
+#Provides: centos-release-gluster = 3.6
 Obsoletes: centos-release-gluster36
 Conflicts: centos-release-gluster36
 
@@ -50,6 +51,9 @@ install -m 0644 -D %{SOURCE0} %{buildroot}/%{_docdir}/README
 %doc %{_docdir}/README
 
 %changelog
+* Mon Dec 10 2018 Niels de Vos <ndevos@redhat.com> - 4.0-2
+- Drop unneeded Provides: to work around YUM bug (rhbz#1657753)
+
 * Wed Dec 5 2018 Niels de Vos <ndevos@redhat.com> - 4.0-1
 - Deprecate centos-release-gluster40
 
