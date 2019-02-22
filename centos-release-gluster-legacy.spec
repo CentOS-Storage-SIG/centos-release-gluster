@@ -1,7 +1,7 @@
 Summary: Disable unmaintained Gluster repositories from the CentOS Storage SIG
 Name: centos-release-gluster-legacy
 Version: 4.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
 BuildArch: noarch
@@ -44,13 +44,16 @@ upgrades to keep using a maintained version. For more details about the
 maintenance and release schedule, see
 https://www.gluster.org/community/release-schedule
 
-%install
-install -m 0644 -D %{SOURCE0} %{buildroot}/%{_docdir}/README
+%build
+cp %{SOURCE0} README
 
 %files
-%doc %{_docdir}/README
+%doc README
 
 %changelog
+* Fri Feb 22 2019 Niels de Vos <ndevos@redhat.com> - 4.0-3
+- Place README in the correct package doc directory
+
 * Mon Dec 10 2018 Niels de Vos <ndevos@redhat.com> - 4.0-2
 - Drop unneeded Provides: to work around YUM bug (rhbz#1657753)
 
